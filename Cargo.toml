@@ -1,0 +1,12 @@
+[package]
+name = "mos6502"
+version = "0.1.0"
+authors = ["12101111 <w12101111@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+bitflags = "1"
+log = { version = "0.4", default-features = false }
+
+[features]
+disasm = [] 
