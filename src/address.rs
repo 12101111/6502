@@ -14,9 +14,11 @@ pub enum AM {
     ZPG,
     ///AbsoluteX 绝对X变址,三字节指令 a,x
     ABX,
+    ///AbsoluteX 绝对X变址,三字节指令 a,x 跨页时周期加1
     abx,
     ///AbsoluteY 绝对Y变址,三字节指令 a,y
     ABY,
+    ///AbsoluteY 绝对Y变址,三字节指令 a,y 跨页时周期加1
     aby,
     ///Relative相对寻址,双字节指令 *+d
     REL,
@@ -28,8 +30,9 @@ pub enum AM {
     ZIX,
     ///ZeroPageIndexIndirectY零页间接Y变址,双字节指令 (d),y
     ZIY,
+    ///ZeroPageIndexIndirectY零页间接Y变址,双字节指令 (d),y
     ziy,
-    //AbsoluteIndexIndirect相对寻址,双字节指令 (a)
+    //AbsoluteIndexIndirect相对寻址,双字节指令 (a) 跨页时周期加1
     IND,
     // 未知
     NON,

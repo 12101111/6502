@@ -48,7 +48,6 @@ pub struct Regs {
     pub p: P,
     /// Program Counter
     pub pc: u16,
-    pub cycle: usize,
 }
 impl Regs {
     pub fn new(pc: u16) -> Regs {
@@ -59,7 +58,6 @@ impl Regs {
             s: 0xfd,
             p: P::S | P::I,
             pc,
-            cycle: 7,
         }
     }
     pub fn set_flags(&mut self, val: u8) {

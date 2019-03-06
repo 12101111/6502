@@ -23,10 +23,11 @@ pub trait Memory {
     fn loadb(&mut self, addr: u16) -> u8;
     fn try_loadb(&self, addr: u16) -> Option<u8>;
     fn storeb(&mut self, addr: u16, val: u8);
+    fn add_cycles(&mut self, val: usize);
+    fn get_cycles(&self) -> usize;
 }
 
 pub struct CPU<T: Memory> {
-    pub cycle: usize,
     pub regs: Regs,
     pub mem: T,
 }
@@ -34,8 +35,6 @@ pub struct CPU<T: Memory> {
 impl<T: Memory> CPU<T> {
     pub fn new(mut mem: T) -> CPU<T> {
         CPU {
-            // RESET execute in 6 cycles
-            cycle: 7,
             regs: Regs::new(u16::from_le_bytes([
                 mem.loadb(RESET_VECTOR),
                 mem.loadb(RESET_VECTOR + 1),
@@ -47,7 +46,6 @@ impl<T: Memory> CPU<T> {
     pub fn reset(&mut self) {
         self.regs = Regs::new(self.loadw(RESET_VECTOR));
         self.mem.reset();
-        self.cycle = 7;
     }
     pub fn nmi(&mut self) {
         let pc = self.regs.pc;

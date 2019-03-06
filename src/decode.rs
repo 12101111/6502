@@ -149,7 +149,8 @@ pub enum OP {
     SLO,
     /// Shift Right then "Exclusive-Or" - LSR + EOR
     SRE,
-    // TODO: Unimplemented Unoffical Opecode
+    // Unimplemented Unoffical Opecode
+    // Won't work in actual 6502
     SHY,
     SHX,
     STP,

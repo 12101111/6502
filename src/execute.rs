@@ -308,7 +308,7 @@ impl<T: Memory> CPU<T> {
             BPL => self.branch(!self.regs.p.contains(P::N)),
             _ => self.regs.pc + ins_size(&am),
         };
-        self.cycle += ticks as usize;
+        self.mem.add_cycles(ticks as usize);
     }
 }
 
@@ -434,15 +434,13 @@ impl<'a, T: Controller> core::fmt::Display for CPU<'a, T> {
         }
         write!(
             f,
-            " A:{:02X} X:{:02X} Y:{:02X} P:{:02X} SP:{:02X} PPU:{},{} CYC:{}",
+            " A:{:02X} X:{:02X} Y:{:02X} P:{:02X} SP:{:02X} CYC:{}",
             self.regs.a,
             self.regs.x,
             self.regs.y,
             self.regs.p.bits(),
             self.regs.s,
-            self.ppu.cycle,
-            self.ppu.scanline,
-            self.cycle
+            self.mem.get_cycles()
         )
     }
 }
