@@ -19,7 +19,7 @@ impl<T: Memory> CPU<T> {
         u16::from_le_bytes([low, high])
     }
     #[cfg(feature = "disasm")]
-    pub fn try_loadb(&self, addr: u16) -> Option<u16> {
+    pub fn try_loadb(&self, addr: u16) -> Option<u8> {
         self.mem.try_loadb(addr)
     }
     #[cfg(feature = "disasm")]

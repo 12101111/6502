@@ -313,12 +313,12 @@ impl<T: Memory> CPU<T> {
 }
 
 #[cfg(feature = "disasm")]
-impl<'a, T: Controller> core::fmt::Display for CPU<'a, T> {
+impl<T: Memory> core::fmt::Display for CPU<T> {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> Result<(), core::fmt::Error> {
         let code = self.try_loadb(self.regs.pc).unwrap();
         let (op, am, _) = DECODE[code as usize].clone();
         write!(f, "{:04X} {:02X} ", self.regs.pc, code)?;
-        match am_bytes_size(&am) {
+        match ins_size(&am) {
             0 => write!(f, "      ")?,
             1 => write!(f, "{:02X}    ", self.try_loadb(self.regs.pc + 1).unwrap())?,
             2 => write!(
