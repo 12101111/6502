@@ -13,6 +13,8 @@ Can pass the test of [nestest.nes](http://nickmass.com/images/nestest.nes)
 
 Need more test on non-nes target
 
+Disassembler is incomplete. Currently only the execution log is displayed in the terminal (by enable `disasm` feature).
+
 ## no_std
 
-This crate supports executing in no_std, but disassembly info needs `alloc` to format string.
+This crate supports executing in `no_std`.
