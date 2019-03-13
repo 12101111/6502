@@ -67,8 +67,4 @@ impl<T: Memory> CPU<T> {
             self.regs.pc = self.loadw(BRK_VECTOR);
         }
     }
-    #[cfg(feature = "disasm")]
-    pub fn set_pc(&mut self, pc: u16) {
-        self.regs.pc = pc;
-    }
 }

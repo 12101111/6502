@@ -6,7 +6,7 @@ A Interpreter/Disassembler for MOS 6502.
 
 Currently mainly supports Ricoh 2A03,and support for BCD is missing.
 
-Can pass the test of [nestest.nes](http://nickmass.com/images/nestest.nes)
+Can pass the test of [nestest.nes](http://www.qmtpro.com/~nes/misc/nestest.nes)
 
 ![test1](./doc/test1.jpg)
 ![test2](./doc/test2.jpg)
